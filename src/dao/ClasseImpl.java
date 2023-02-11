@@ -30,7 +30,15 @@ public class ClasseImpl implements IClasse {
 
     @Override
     public int update(Classe classe) {
-        return 0;
+        Statement p;
+        String sql = "UPDATE classe SET nom = '"+classe.getNom()+"', effectif = "+classe.getEffectif()+" WHERE  idc = "+classe.getId()+"";
+        try{
+            p = con.createStatement();
+            p.executeUpdate(sql);
+            return 1;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

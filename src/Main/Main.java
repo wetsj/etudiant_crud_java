@@ -17,8 +17,16 @@ public class Main {
         clI.add(cl);*/
 
         //Supprimer une classe dans la base de donnee par l'id
+        /*ClasseImpl clI = new ClasseImpl();
+        Classe cl = new Classe();
+        clI.delete(3);*/
+
+        //Modifier une classe dans la base de donnee
         ClasseImpl clI = new ClasseImpl();
         Classe cl = new Classe();
-        clI.delete(3);
+        cl.setId(1);
+        cl.setNom("LpGL");
+        cl.setEffectif(22);
+        clI.update(cl);
     }
 }
