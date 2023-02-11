@@ -36,7 +36,7 @@ public class ClasseImpl implements IClasse {
     @Override
     public int delete(int id) {
         Statement p;
-        String sql = "Delete from classe where idc"+id+"";
+        String sql = "Delete from classe where idc="+id+"";
         try{
             p = con.createStatement();
             p.executeUpdate(sql);
