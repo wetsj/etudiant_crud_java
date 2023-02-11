@@ -3,7 +3,9 @@ package dao;
 import entity.Classe;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClasseImpl implements IClasse {
@@ -57,7 +59,24 @@ public class ClasseImpl implements IClasse {
 
     @Override
     public List<Classe> list() {
-        return null;
+        Statement p;
+        List<Classe> listClasse = new ArrayList<>();
+        String sql = "SELECT * FROM classe";
+        try{
+            p = con.createStatement();
+            ResultSet tab = p.executeQuery(sql);
+            while(tab.next())
+            {
+                Classe cl = new Classe();
+                cl.setId(tab.getInt("idc"));
+                cl.setNom(tab.getString("nom"));
+                cl.setEffectif(tab.getInt("effectif"));
+                listClasse.add(cl);
+            }
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        return listClasse;
     }
 
     @Override

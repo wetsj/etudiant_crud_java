@@ -22,11 +22,20 @@ public class Main {
         clI.delete(3);*/
 
         //Modifier une classe dans la base de donnee
-        ClasseImpl clI = new ClasseImpl();
+        /*ClasseImpl clI = new ClasseImpl();
         Classe cl = new Classe();
         cl.setId(1);
         cl.setNom("LpGL");
         cl.setEffectif(22);
-        clI.update(cl);
+        clI.update(cl);*/
+
+        //Lister les classes de la base de donnee
+        ClasseImpl clI = new ClasseImpl();
+        for (Classe cl: clI.list())
+        {
+            System.out.println(cl.getId());
+            System.out.println(cl.getNom());
+            System.out.println(cl.getEffectif());
+        }
     }
 }
