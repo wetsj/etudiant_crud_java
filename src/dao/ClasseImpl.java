@@ -7,21 +7,21 @@ import java.sql.Statement;
 import java.util.List;
 
 public class ClasseImpl implements IClasse {
-    private final Connection cnx;
+    private final Connection con;
 
     public ClasseImpl() {
+        DB db = new DB();
 
-        this.cnx = cnx;
+        this.con = db.getConnection();
     }
 
     @Override
     public int add(Classe classe) {
-        Statement stm;
-        String sql = "Insert into classe (nom, effectif) values ('"+classe.getNom()+"',"+classe.getEffectif()+"");
-
+        Statement p;
+        String sql = "Insert into classe (nom, effectif) values ('"+classe.getNom()+"',"+classe.getEffectif()+")";
         try{
-            stm = cnx.createStatement();
-            stm.executeUpdate(sql);
+            p = con.createStatement();
+            p.executeUpdate(sql);
         }catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -35,7 +35,16 @@ public class ClasseImpl implements IClasse {
 
     @Override
     public int delete(int id) {
-        return 0;
+        Statement p;
+        String sql = "Delete from classe where idc"+id+"";
+        try{
+            p = con.createStatement();
+            p.executeUpdate(sql);
+            return 1;
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+        //return 0;
     }
 
     @Override

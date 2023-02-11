@@ -11,8 +11,10 @@ public class Classe {
     }
 
     //methodes avec argument
-    public Classe(String nom) {
+    public Classe(int id, String nom, int effectif) {
+        this.id = id;
         this.nom = nom;
+        this.effectif = effectif;
     }
 
     //getters
